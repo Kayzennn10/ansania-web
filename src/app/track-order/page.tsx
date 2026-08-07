@@ -1,40 +1,88 @@
-export const metadata = {
-  title: "Lacak Pesanan | Ansania"
-};
+import React from 'react';
 
 export default function TrackOrderPage() {
   return (
-    <>
-      <div className="page-header" style={{ padding: '4rem 1.5rem' }}>
-        <div className="container">
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Lacak Pesanan</h1>
-          <p style={{ fontSize: '1.2rem', color: 'var(--color-text-light)' }}>Cek status pengiriman paket Anda secara real-time.</p>
-        </div>
+    <div className="trk-container">
+      <div className="trk-header">
+        <h1 className="m-section-title">Lacak Pesanan</h1>
+        <p className="trk-subtitle">Pantau status pengiriman pesanan Anda secara real-time.</p>
       </div>
 
-      <section className="section container" style={{ display: 'flex', justifyContent: 'center' }}>
-        <div style={{ background: 'var(--color-surface)', padding: '3rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', width: '100%', maxWidth: '600px' }}>
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Nomor Resi / ID Pesanan</label>
-              <input type="text" placeholder="Masukkan nomor resi atau ID pesanan..." style={{ width: '100%', padding: '1rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)' }} />
-            </div>
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Email Pengguna (Opsional)</label>
-              <input type="email" placeholder="contoh@email.com" style={{ width: '100%', padding: '1rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)' }} />
-            </div>
-            <button className="btn-primary" style={{ width: '100%', marginTop: '1rem', padding: '1rem' }}>Lacak Sekarang</button>
-          </form>
+      <div className="trk-card">
+        <form className="trk-search-form">
+          <div className="trk-input-wrapper">
+            <svg className="trk-icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" className="trk-search-input" placeholder="Masukkan Nomor Resi atau Nomor Pesanan" />
+          </div>
+          <button type="submit" className="m-btn m-btn-dark trk-search-btn">Lacak</button>
+        </form>
 
-          {/* Skeleton Status Placeholder */}
-          <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--color-border)' }}>
-            <h3 style={{ marginBottom: '1.5rem', textAlign: 'center' }}>Status Terakhir</h3>
-            <div style={{ padding: '1.5rem', background: 'var(--color-background)', borderRadius: 'var(--radius-sm)', textAlign: 'center', color: 'var(--color-text-light)' }}>
-              Silakan masukkan nomor resi untuk melihat status pesanan.
+        <div className="trk-result">
+          <div className="trk-result-header">
+            <div>
+              <p className="trk-result-label">Nomor Resi</p>
+              <h3 className="trk-result-value">JX8890213890ID</h3>
+            </div>
+            <div style={{textAlign: 'right'}}>
+              <p className="trk-result-label">Kurir</p>
+              <h3 className="trk-result-value">JNE Express (REG)</h3>
+            </div>
+          </div>
+          
+          <div className="trk-timeline">
+            <div className="trk-step">
+              <div className="trk-step-dot"></div>
+              <div className="trk-step-content">
+                <p className="trk-step-title">Pesanan Dibuat</p>
+                <p className="trk-step-time">12 Agustus 2026, 09:40</p>
+              </div>
+            </div>
+            <div className="trk-line"></div>
+            <div className="trk-step">
+              <div className="trk-step-dot"></div>
+              <div className="trk-step-content">
+                <p className="trk-step-title">Dikemas</p>
+                <p className="trk-step-time">12 Agustus 2026, 11:20</p>
+              </div>
+            </div>
+            <div className="trk-line"></div>
+            <div className="trk-step">
+              <div className="trk-step-dot"></div>
+              <div className="trk-step-content">
+                <p className="trk-step-title">Dikirim</p>
+                <p className="trk-step-time">12 Agustus 2026, 15:30</p>
+              </div>
+            </div>
+            <div className="trk-line trk-line-active"></div>
+            <div className="trk-step trk-step-active">
+              <div className="trk-step-dot trk-step-dot-active"></div>
+              <div className="trk-step-content">
+                <p className="trk-step-title">Dalam Perjalanan</p>
+                <p className="trk-step-time">13 Agustus 2026, 08:15 (Sortation Center Jakarta)</p>
+              </div>
+            </div>
+            <div className="trk-line trk-line-pending"></div>
+            <div className="trk-step trk-step-pending">
+              <div className="trk-step-dot trk-step-dot-pending"></div>
+              <div className="trk-step-content">
+                <p className="trk-step-title">Terkirim</p>
+                <p className="trk-step-time">Estimasi: 14 Agustus 2026</p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      <div className="trk-recent">
+        <h4 className="trk-recent-title">Pencarian Terakhir</h4>
+        <div className="trk-recent-tags">
+          <button className="trk-recent-tag">ANS-889021</button>
+          <button className="trk-recent-tag">JX8890213890ID</button>
+          <button className="trk-recent-tag">ANS-773829</button>
+        </div>
+      </div>
+    </div>
   );
 }

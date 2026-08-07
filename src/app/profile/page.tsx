@@ -1,67 +1,125 @@
-import Link from "next/link";
-
-export const metadata = {
-  title: "Profil Akun | Ansania"
-};
+'use client';
+import Link from 'next/link';
 
 export default function ProfilePage() {
   return (
-    <>
-      <div className="page-header" style={{ padding: '4rem 1.5rem', background: 'var(--color-primary)', color: '#fff' }}>
-        <div className="container">
-          <h1 style={{ color: '#fff' }}>Akun Saya</h1>
-          <p style={{ color: 'rgba(255,255,255,0.8)' }}>Kelola informasi profil, pesanan, dan alamat Anda.</p>
-        </div>
-      </div>
+    <div className="container">
+      <div className="prof-layout">
+        <aside className="prof-sidebar">
+          <div className="prof-user-brief">
+            <div className="prof-avatar">A</div>
+            <div className="prof-name">Aisha Zahra</div>
+            <div className="prof-tier">Silver Member</div>
+          </div>
+          <nav className="prof-nav">
+            <Link href="/profile" className="prof-nav-link active">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+              Profil Saya
+            </Link>
+            <Link href="#" className="prof-nav-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+              Riwayat Pesanan
+            </Link>
+            <Link href="/wishlist" className="prof-nav-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+              Wishlist
+            </Link>
+            <Link href="#" className="prof-nav-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+              Alamat
+            </Link>
+            <Link href="#" className="prof-nav-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              Keamanan
+            </Link>
+            <Link href="#" className="prof-nav-link" style={{ marginTop: '2rem', color: '#d9534f' }}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+              Logout
+            </Link>
+          </nav>
+        </aside>
 
-      <section className="section container">
-        <div className="grid" style={{ gridTemplateColumns: '250px 1fr', gap: '3rem', alignItems: 'start' }}>
-          {/* Sidebar Profil */}
-          <aside style={{ background: 'var(--color-surface)', borderRadius: 'var(--radius-md)', padding: '1.5rem', border: '1px solid var(--color-border)' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '1px solid var(--color-border)' }}>
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--color-secondary)', margin: '0 auto 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '2rem', fontWeight: 600 }}>A</div>
-              <h3 style={{ fontSize: '1.1rem' }}>Aisyah Maharani</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-light)' }}>Member sejak 2026</p>
+        <main className="prof-main">
+          <div className="prof-card">
+            <h2 className="prof-card-title">Ringkasan Akun</h2>
+            <div className="prof-stats">
+              <div className="prof-stat-box">
+                <div className="prof-stat-label">Total Pesanan</div>
+                <div className="prof-stat-value">12</div>
+              </div>
+              <div className="prof-stat-box">
+                <div className="prof-stat-label">Total Belanja</div>
+                <div className="prof-stat-value">Rp 2.450k</div>
+              </div>
+              <div className="prof-stat-box">
+                <div className="prof-stat-label">Poin Loyalty</div>
+                <div className="prof-stat-value">450</div>
+              </div>
             </div>
-            
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <Link href="#" style={{ padding: '0.8rem 1rem', borderRadius: 'var(--radius-sm)', background: 'rgba(139, 115, 85, 0.1)', color: 'var(--color-primary)', fontWeight: 600 }}>Profil Saya</Link>
-              <Link href="#" style={{ padding: '0.8rem 1rem', borderRadius: 'var(--radius-sm)', color: 'var(--color-text)' }}>Riwayat Pesanan</Link>
-              <Link href="/wishlist" style={{ padding: '0.8rem 1rem', borderRadius: 'var(--radius-sm)', color: 'var(--color-text)' }}>Daftar Keinginan</Link>
-              <Link href="#" style={{ padding: '0.8rem 1rem', borderRadius: 'var(--radius-sm)', color: 'var(--color-text)' }}>Alamat Pengiriman</Link>
-              <Link href="/" style={{ padding: '0.8rem 1rem', borderRadius: 'var(--radius-sm)', color: '#d9534f', marginTop: '1rem' }}>Keluar</Link>
-            </nav>
-          </aside>
+          </div>
 
-          {/* Konten Utama Profil */}
-          <div style={{ background: 'var(--color-surface)', borderRadius: 'var(--radius-md)', padding: '2.5rem', border: '1px solid var(--color-border)' }}>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: '2rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem' }}>Informasi Pribadi</h2>
-            
-            <form style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-              <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Nama Depan</label>
-                <input type="text" defaultValue="Aisyah" style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)' }} />
+          <div className="prof-card">
+            <h2 className="prof-card-title">Edit Profil</h2>
+            <form className="prof-form-grid">
+              <div className="auth-input-group">
+                <label className="auth-label">Nama Lengkap</label>
+                <input type="text" className="auth-input" defaultValue="Aisha Zahra" />
               </div>
-              <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Nama Belakang</label>
-                <input type="text" defaultValue="Maharani" style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)' }} />
+              <div className="auth-input-group">
+                <label className="auth-label">Email</label>
+                <input type="email" className="auth-input" defaultValue="aisha.z@example.com" />
               </div>
-              <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Email</label>
-                <input type="email" defaultValue="aisyah@example.com" style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)' }} />
+              <div className="auth-input-group">
+                <label className="auth-label">Nomor Telepon</label>
+                <input type="tel" className="auth-input" defaultValue="081234567890" />
               </div>
-              <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>Nomor Telepon</label>
-                <input type="tel" defaultValue="08123456789" style={{ width: '100%', padding: '0.8rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)' }} />
+              <div className="auth-input-group">
+                <label className="auth-label">Tanggal Lahir</label>
+                <input type="date" className="auth-input" defaultValue="1995-08-15" />
               </div>
-              
-              <div style={{ gridColumn: 'span 2', marginTop: '1rem' }}>
-                <button className="btn-primary">Simpan Perubahan</button>
+              <div className="auth-input-group" style={{ gridColumn: '1 / -1' }}>
+                <button type="button" className="auth-btn" style={{ width: 'max-content', padding: '0.8rem 2rem' }}>Simpan Perubahan</button>
               </div>
             </form>
           </div>
-        </div>
-      </section>
-    </>
+
+          <div className="prof-card">
+            <h2 className="prof-card-title">Pesanan Terakhir</h2>
+            <div style={{ overflowX: 'auto' }}>
+              <table className="prof-table">
+                <thead>
+                  <tr>
+                    <th>No. Order</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#ANS-20230915</td>
+                    <td>15 Sep 2023</td>
+                    <td><span className="prof-badge dikirim">Dikirim</span></td>
+                    <td>Rp 350.000</td>
+                  </tr>
+                  <tr>
+                    <td>#ANS-20230802</td>
+                    <td>02 Aug 2023</td>
+                    <td><span className="prof-badge selesai">Selesai</span></td>
+                    <td>Rp 425.000</td>
+                  </tr>
+                  <tr>
+                    <td>#ANS-20230718</td>
+                    <td>18 Jul 2023</td>
+                    <td><span className="prof-badge selesai">Selesai</span></td>
+                    <td>Rp 210.000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
   );
 }

@@ -1,42 +1,55 @@
-export const metadata = {
-  title: "FAQ & Pusat Bantuan | Ansania"
-};
+import React from 'react';
 
 export default function FAQPage() {
   return (
-    <>
-      <div className="page-header" style={{ padding: '5rem 1.5rem' }}>
-        <div className="container">
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Pusat Bantuan & FAQ</h1>
-          <p style={{ fontSize: '1.2rem', color: 'var(--color-text-light)' }}>Temukan jawaban untuk pertanyaan yang paling sering diajukan.</p>
+    <div className="faq-container">
+      <div className="faq-header">
+        <h1 className="m-section-title">Pertanyaan yang Sering Diajukan</h1>
+        <div className="faq-search-wrapper">
+          <svg className="faq-icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" className="faq-search-input" placeholder="Cari pertanyaan..." />
         </div>
       </div>
 
-      <section className="section container" style={{ maxWidth: '800px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          
-          <div style={{ background: 'var(--color-surface)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>Bagaimana cara merawat bahan Pashmina Silk?</h3>
-            <p style={{ color: 'var(--color-text-light)', lineHeight: '1.6' }}>Cuci dengan tangan menggunakan air dingin dan deterjen cair yang lembut. Hindari penggunaan mesin cuci dan mesin pengering. Jemur di tempat teduh dan setrika dengan suhu rendah.</p>
-          </div>
-          
-          <div style={{ background: 'var(--color-surface)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>Berapa lama estimasi pengiriman?</h3>
-            <p style={{ color: 'var(--color-text-light)', lineHeight: '1.6' }}>Pengiriman reguler memakan waktu 2-4 hari kerja untuk area Jabodetabek, dan 3-7 hari kerja untuk di luar Jabodetabek. Pengiriman instan tersedia untuk area tertentu.</p>
-          </div>
-          
-          <div style={{ background: 'var(--color-surface)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>Apakah ada kebijakan pengembalian produk?</h3>
-            <p style={{ color: 'var(--color-text-light)', lineHeight: '1.6' }}>Ya, kami menerima pengembalian produk maksimal 3 hari setelah barang diterima, dengan syarat tag belum dilepas, belum dicuci, dan menyertakan video unboxing.</p>
-          </div>
-          
+      <div className="faq-category-pills">
+        <button className="faq-pill faq-pill-active">Pemesanan</button>
+        <button className="faq-pill">Pengiriman</button>
+        <button className="faq-pill">Pembayaran</button>
+        <button className="faq-pill">Retur</button>
+        <button className="faq-pill">Produk</button>
+      </div>
+
+      <div className="faq-grid">
+        <div className="faq-accordion">
+          {[
+            { q: "Bagaimana cara melakukan pemesanan?", a: "Anda dapat memilih produk yang diinginkan, menambahkannya ke keranjang belanja, dan melanjutkan ke halaman checkout untuk mengisi detail pengiriman dan pembayaran." },
+            { q: "Apakah saya perlu membuat akun untuk berbelanja?", a: "Tidak, Anda dapat berbelanja sebagai tamu (guest). Namun, membuat akun akan memudahkan Anda dalam melacak pesanan dan mempercepat proses checkout di masa mendatang." },
+            { q: "Apakah stok produk selalu tersedia?", a: "Kami selalu berusaha memastikan ketersediaan stok yang akurat di website. Namun, jika terjadi kesalahan dan produk yang Anda pesan kosong, kami akan segera menghubungi Anda." },
+            { q: "Bagaimana cara mengubah atau membatalkan pesanan?", a: "Jika pesanan belum diproses (status 'Menunggu Pembayaran'), Anda dapat membatalkannya melalui halaman akun Anda. Jika sudah diproses, silakan hubungi Customer Service kami secepatnya." },
+            { q: "Apakah Ansania menerima pesanan dalam jumlah besar (grosir)?", a: "Ya, kami menerima pesanan grosir. Silakan hubungi tim B2B kami melalui halaman Kontak untuk informasi lebih lanjut mengenai harga dan syarat ketentuan." }
+          ].map((item, i) => (
+            <details key={i} className="faq-accordion-item" name="faq">
+              <summary className="faq-accordion-summary">
+                {item.q}
+                <svg className="faq-accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="faq-accordion-content">
+                <p>{item.a}</p>
+              </div>
+            </details>
+          ))}
         </div>
-        
-        <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-          <p style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>Masih punya pertanyaan?</p>
-          <button className="btn-primary">Hubungi Customer Service</button>
-        </div>
-      </section>
-    </>
+      </div>
+
+      <div className="faq-contact-cta">
+        <h2 className="faq-cta-title">Masih ada pertanyaan?</h2>
+        <p className="faq-cta-text">Tim Customer Service kami siap membantu Anda.</p>
+        <a href="/contact" className="m-btn m-btn-dark faq-cta-btn">Hubungi Kami</a>
+      </div>
+    </div>
   );
 }

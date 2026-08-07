@@ -1,40 +1,53 @@
-export const metadata = {
-  title: "Lookbook | Ansania"
-};
+import Link from 'next/link';
 
 export default function LookbookPage() {
+  const images = [
+    { img: 'https://images.unsplash.com/photo-1589994161775-69bc749d21e0?auto=format&fit=crop&q=80&w=800', title: 'Serene Beige' },
+    { img: 'https://images.unsplash.com/photo-1623081014197-0dc2212903e1?auto=format&fit=crop&q=80&w=800', title: 'Desert Rose' },
+    { img: 'https://images.unsplash.com/photo-1596455607563-ad6193f76b17?auto=format&fit=crop&q=80&w=800', title: 'Olive Dream' },
+    { img: 'https://images.unsplash.com/photo-1610427351660-fae9b387ba94?auto=format&fit=crop&q=80&w=800', title: 'Sage Minimal' },
+    { img: 'https://images.unsplash.com/photo-1589994160783-daeb5b1db320?auto=format&fit=crop&q=80&w=800', title: 'Terracotta' },
+  ];
+
   return (
-    <>
-      <div className="page-header" style={{ padding: '5rem 1.5rem', background: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)' }}>
-        <div className="container">
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Lookbook Musim Ini</h1>
-          <p style={{ fontSize: '1.2rem', color: 'var(--color-text-light)' }}>Inspirasi gaya memukau dengan balutan koleksi terbaru Ansania.</p>
+    <main>
+      <div className="container">
+        <div className="lkbk-hero">
+          <h1 className="lkbk-hero-title">Lookbook.</h1>
+          <div className="lkbk-tabs">
+            <span className="lkbk-tab active">MUSIM SEMI</span>
+            <span className="lkbk-tab">MUSIM PANAS</span>
+            <span className="lkbk-tab">MUSIM GUGUR</span>
+            <span className="lkbk-tab">MUSIM DINGIN</span>
+          </div>
+        </div>
+
+        <div className="lkbk-feature">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://images.unsplash.com/photo-1542031751-24ff0e2776c5?auto=format&fit=crop&q=80&w=1200" alt="Featured Look" className="lkbk-feature-img" />
+          <div className="lkbk-feature-content">
+            <p className="lkbk-feature-overline">KOLEKSI EKSKLUSIF</p>
+            <h3>Napas Musim Semi</h3>
+            <p>Eksplorasi warna-warna bumi yang hangat, menghadirkan kenyamanan dan keanggunan dalam setiap helai benang. Koleksi musim ini merayakan kecantikan natural dan siluet modern yang timeless.</p>
+            <Link href="/catalog" className="lkbk-feature-link">
+              EKSPLORASI KOLEKSI
+            </Link>
+          </div>
+        </div>
+
+        <div className="lkbk-masonry">
+          {images.map((item, i) => (
+            <div key={i} className="lkbk-item">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={item.img} alt={item.title} className="lkbk-item-img" />
+              <div className="lkbk-item-overlay">
+                <h3 className="lkbk-item-name">{item.title}</h3>
+                <Link href="/catalog" className="lkbk-item-link">Lihat Produk</Link>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <section className="section container">
-        <div style={{ columns: '3 250px', gap: '1.5rem' }}>
-          {/* Pinterest style masonry layout skeleton */}
-          <div style={{ marginBottom: '1.5rem', breakInside: 'avoid' }}>
-            <img src="https://images.unsplash.com/photo-1596455607563-ad6193f76b17?q=80&w=600&auto=format&fit=crop" style={{ width: '100%', borderRadius: 'var(--radius-md)' }} alt="Look 1" loading="lazy" />
-          </div>
-          <div style={{ marginBottom: '1.5rem', breakInside: 'avoid' }}>
-            <img src="https://images.unsplash.com/photo-1584042898744-84631379dbda?q=80&w=600&auto=format&fit=crop" style={{ width: '100%', borderRadius: 'var(--radius-md)' }} alt="Look 2" loading="lazy" />
-          </div>
-          <div style={{ marginBottom: '1.5rem', breakInside: 'avoid' }}>
-            <img src="https://images.unsplash.com/photo-1589718471691-1ec8dc524f22?q=80&w=600&auto=format&fit=crop" style={{ width: '100%', borderRadius: 'var(--radius-md)' }} alt="Look 3" loading="lazy" />
-          </div>
-          <div style={{ marginBottom: '1.5rem', breakInside: 'avoid' }}>
-            <img src="https://plus.unsplash.com/premium_photo-1675129654153-f7256191b248?q=80&w=600&auto=format&fit=crop" style={{ width: '100%', borderRadius: 'var(--radius-md)' }} alt="Look 4" loading="lazy" />
-          </div>
-          <div style={{ marginBottom: '1.5rem', breakInside: 'avoid' }}>
-            <img src="https://images.unsplash.com/photo-1607527632617-640a2bb1de6b?q=80&w=600&auto=format&fit=crop" style={{ width: '100%', borderRadius: 'var(--radius-md)' }} alt="Look 5" loading="lazy" />
-          </div>
-          <div style={{ marginBottom: '1.5rem', breakInside: 'avoid' }}>
-            <img src="https://images.unsplash.com/photo-1605364850989-10e3001dd3bd?q=80&w=600&auto=format&fit=crop" style={{ width: '100%', borderRadius: 'var(--radius-md)' }} alt="Look 6" loading="lazy" />
-          </div>
-        </div>
-      </section>
-    </>
+    </main>
   );
 }
